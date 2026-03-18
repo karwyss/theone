@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
   <title>THE ONE Barbershop Wadowice | Barber & Fryzjer Premium</title>
   <meta name="description" content="THE ONE Barbershop Wadowice – barber i fryzjer premium. Lwowska 19/3. Strzyżenie, broda, fryzury damskie. Tel: 798 610 954."/>
   <meta name="keywords" content="barber Wadowice, fryzjer Wadowice, barber męski, fryzjer damski Wadowice"/>
@@ -63,16 +63,15 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
 .nav-inner{
   max-width:1300px;margin:0 auto;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 2rem;height:92px;
+  padding:0 2rem;height:72px;
 }
 .nav-logo img{
-  height:72px;
+  height:60px;
   width:auto;
-  /* filter:brightness(0) invert(1); */
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1)) invert(1);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) invert(1);
   object-fit:contain;
 }
-.nav-links{display:flex;list-style:none;gap:.25rem;align-items:center;margin-left:500px;}
+.nav-links{display:flex;list-style:none;gap:.25rem;align-items:center;margin-left:auto;}
 .nav-links a{
   font-family:var(--font-sub);font-size:.8rem;font-weight:400;
   letter-spacing:.12em;text-transform:uppercase;
@@ -90,49 +89,137 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
 .nav-links a:hover::after{left:.5rem;right:.5rem}
 
 .nav-actions{display:flex;align-items:center;gap:1rem}
-.nav-tel-wrap{
-  display:flex;align-items:center;gap:.5rem;
-  font-family:var(--font-sub);font-size:.85rem;font-weight:400;
-  color:rgba(255,255,255,.6);letter-spacing:.06em;
-}
-.nav-tel-wrap i{color:var(--red)}
-.nav-tel-wrap a{color:var(--white);font-weight:600;transition:color .2s}
-.nav-tel-wrap a:hover{color:var(--red)}
-.nav-cta-btn{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-family:var(--font-sub);font-size:.78rem;font-weight:600;
-  letter-spacing:.12em;text-transform:uppercase;
-  background:var(--red);color:var(--white);
-  padding:.6rem 1.4rem;
-  border:2px solid var(--red);
-  transition:background .3s,color .3s,transform .2s;
-}
-.nav-cta-btn:hover{background:transparent;color:var(--red);transform:translateY(-1px)}
 
-/* Hamburger */
-.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-.ham span{display:block;width:24px;height:2px;background:var(--white);transition:.3s}
-.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.ham.open span:nth-child(2){opacity:0}
-.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* Hamburger - nowy styl */
+.ham{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  width:44px;
+  height:44px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:8px;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  position:relative;
+  z-index:1001;
+}
+.ham:hover{
+  background:rgba(255,255,255,0.2);
+  border-color:var(--red);
+}
+.ham span{
+  display:block;
+  width:22px;
+  height:2px;
+  background:var(--white);
+  margin:3px 0;
+  transition:all 0.3s var(--ease);
+  border-radius:2px;
+}
+.ham.open{
+  background:var(--red);
+  border-color:var(--red);
+}
+.ham.open span:nth-child(1){
+  transform:translateY(8px) rotate(45deg);
+  background:white;
+}
+.ham.open span:nth-child(2){
+  opacity:0;
+  transform:scale(0);
+}
+.ham.open span:nth-child(3){
+  transform:translateY(-8px) rotate(-45deg);
+  background:white;
+}
 
-/* Mobile menu */
+/* Mobile menu - nowy styl */
 .mob-menu{
-  display:none;position:fixed;top:72px;left:0;right:0;bottom:0;z-index:998;
-  background:var(--navy);flex-direction:column;align-items:center;justify-content:center;
-  gap:2rem;opacity:0;pointer-events:none;transition:opacity .3s;
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:998;
+  background:rgba(14,27,46,0.98);
+  backdrop-filter:blur(10px);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2rem;
+  opacity:0;
+  visibility:hidden;
+  transition:all 0.4s var(--ease);
 }
-.mob-menu.open{display:flex;opacity:1;pointer-events:all}
+.mob-menu.open{
+  opacity:1;
+  visibility:visible;
+}
 .mob-menu a{
-  font-family:var(--font-head);font-size:clamp(2rem,6vw,3rem);
-  color:var(--white);letter-spacing:.08em;transition:color .2s;
+  font-family:var(--font-head);
+  font-size:clamp(2rem,8vw,3rem);
+  color:var(--white);
+  letter-spacing:.08em;
+  text-decoration:none;
+  position:relative;
+  padding:0.5rem 1rem;
+  transition:all 0.3s;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeInUp 0.4s forwards;
 }
-.mob-menu a:hover{color:var(--red)}
+.mob-menu a:nth-child(1){animation-delay:0.1s}
+.mob-menu a:nth-child(2){animation-delay:0.2s}
+.mob-menu a:nth-child(3){animation-delay:0.3s}
+.mob-menu a:nth-child(4){animation-delay:0.4s}
+.mob-menu a:nth-child(5){animation-delay:0.5s}
+@keyframes fadeInUp{
+  to{opacity:1;transform:translateY(0)}
+}
+.mob-menu a::before{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:50%;
+  right:50%;
+  height:2px;
+  background:var(--red);
+  transition:all 0.3s;
+}
+.mob-menu a:hover{
+  color:var(--red);
+}
+.mob-menu a:hover::before{
+  left:0;
+  right:0;
+}
 .mob-menu .mob-tel{
-  font-family:var(--font-sub);font-size:1.2rem;color:rgba(255,255,255,.6);
-  display:flex;align-items:center;gap:.5rem;margin-top:1rem;
+  font-family:var(--font-sub);
+  font-size:1.2rem;
+  color:var(--white);
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  margin-top:2rem;
+  padding:1rem 2rem;
+  background:rgba(255,255,255,0.1);
+  border-radius:50px;
+  border:1px solid rgba(255,255,255,0.2);
+  transition:all 0.3s;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeInUp 0.4s 0.6s forwards;
 }
-.mob-menu .mob-tel a{color:var(--white);font-weight:600}
+.mob-menu .mob-tel:hover{
+  background:var(--red);
+  border-color:var(--red);
+}
+.mob-menu .mob-tel i{color:var(--red);margin-right:0.5rem}
+.mob-menu .mob-tel:hover i{color:white}
 
 /* Mobile sticky call */
 .mob-call{
@@ -162,9 +249,9 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   content:'';position:absolute;inset:0;
   background:linear-gradient(
     105deg,
-    rgba(14,27,46,0.92) 0%,
-    rgba(14,27,46,0.78) 45%,
-    rgba(14,27,46,0.35) 100%
+    rgba(14,27,46,0.95) 0%,
+    rgba(14,27,46,0.85) 50%,
+    rgba(14,27,46,0.7) 100%
   );
 }
 
@@ -186,10 +273,12 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
 
 .hero-content{
   position:relative;z-index:3;
-  max-width:1300px;margin:0 auto;padding:4rem 3rem 4rem 4rem;
-  display:flex;flex-direction:column;gap:1.5rem;
-  max-width:700px;margin-left:clamp(2rem,8vw,8rem);
-  margin-left: 350px;
+  max-width:1300px;margin:0 auto;
+  padding:4rem 2rem;
+  display:flex;
+  flex-direction:column;
+  gap:1.5rem;
+  width:100%;
 }
 
 .hero-badge{
@@ -203,7 +292,7 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
 
 .hero-h1{
   font-family:var(--font-head);
-  font-size:clamp(3.5rem,9vw,7.5rem);
+  font-size:clamp(3rem,12vw,7.5rem);
   color:var(--white);
   line-height:.95;letter-spacing:.02em;
 }
@@ -211,8 +300,8 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
 
 .hero-sub{
   font-family:var(--font-sub);font-weight:300;
-  font-size:clamp(.9rem,1.5vw,1.1rem);
-  color:rgba(255,255,255,.7);
+  font-size:clamp(1rem,3vw,1.1rem);
+  color:rgba(255,255,255,.8);
   max-width:42ch;line-height:1.7;letter-spacing:.02em;
 }
 
@@ -221,11 +310,21 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   background:linear-gradient(to right,var(--red),transparent);
 }
 
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.hero-actions{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.hero-actions .btn{
+  flex:0 0 auto;
+  min-width:auto;
+  width: auto;
+}
 
 .hero-tel{
   display:flex;align-items:center;gap:.6rem;
-  font-family:var(--font-sub);font-size:1rem;font-weight:600;
+  font-family:var(--font-sub);font-size:1.2rem;font-weight:600;
   color:var(--white);letter-spacing:.06em;
   margin-top:.5rem;
 }
@@ -233,10 +332,12 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
 
 /* Stats bar */
 .hero-stats{
-  display:flex;gap:0;margin-top:1.5rem;
+  display:flex;
+  gap:2rem;
+  margin-top:1.5rem;
   border-top:1px solid rgba(255,255,255,.15);
   padding-top:1.5rem;
-  flex-wrap:wrap;gap:2.5rem;
+  flex-wrap:wrap;
 }
 .hstat{display:flex;align-items:center;gap:.75rem}
 .hstat-icon{
@@ -286,8 +387,6 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   display:grid;grid-template-columns:1fr 1.2fr;
   gap:5rem;align-items:center;
 }
-
-/* Image collage */
 .about-images{
   position:relative;
   height:520px;
@@ -313,7 +412,6 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   z-index:2;
   border:4px solid var(--white);
 }
-/* Red vertical bar */
 .about-images::before{
   content:'';
   position:absolute;left:-.5rem;top:10%;bottom:10%;
@@ -341,7 +439,6 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   background:var(--navy);
   position:relative;overflow:hidden;
 }
-/* Barber stripe texture bg */
 #services::before{
   content:'';position:absolute;inset:0;
   background:var(--stripe);
@@ -360,9 +457,8 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   color:rgba(255,255,255,.5);max-width:32ch;text-align:right;line-height:1.7;
 }
 
-/* Services: 2-column grid, alternating sizes */
 .svc-grid{
-  max-width:1300px;margin:0 auto;padding: 0.5rem;
+  max-width:1300px;margin:0 auto;padding:0.5rem;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:1px;background:rgba(255,255,255,.08);
@@ -382,9 +478,7 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   height:3px;background:transparent;
   transition:background .4s;
 }
-
 .svc-item:hover::before{background:var(--red)}
-
 .svc-icon{
   width:52px;height:52px;
   background:rgba(204,31,40,.15);
@@ -395,14 +489,12 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   flex-shrink:0;
 }
 .svc-item:hover .svc-icon{background:var(--red);color:var(--white)}
-
 .svc-num{
   position:absolute;bottom:1rem;right:1.5rem;
   font-family:var(--font-head);font-size:5rem;
   color:rgba(255,255,255,.04);line-height:1;
   user-select:none;
 }
-
 .svc-name{
   font-family:var(--font-sub);font-size:1.1rem;font-weight:600;
   color:var(--white);letter-spacing:.04em;
@@ -461,8 +553,6 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
 .gcell:nth-child(1){grid-row:span 2}
 .gcell img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .gcell:hover img{transform:scale(1.05)}
-
-/* Overlay */
 .gcell-ov{
   position:absolute;inset:0;
   background:linear-gradient(to top, rgba(14,27,46,.85) 0%, transparent 50%);
@@ -550,7 +640,6 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   position:relative;overflow:hidden;
   text-align:center;
 }
-/* Diagonal stripes on cta */
 #cta::before{
   content:'';position:absolute;inset:0;
   background:repeating-linear-gradient(
@@ -559,7 +648,7 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
     rgba(0,0,0,.04) 30px, rgba(0,0,0,.04) 32px
   );
 }
-.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:0 2.5rem}
+.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:0 2rem}
 .cta-icon{font-size:3.5rem;color:rgba(255,255,255,.3);margin-bottom:1.5rem}
 .cta-h2{
   font-family:var(--font-head);font-size:clamp(3rem,8vw,6rem);
@@ -616,7 +705,6 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   box-shadow:0 8px 40px rgba(0,0,0,.1);
 }
 .contact-map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.3)}
-/* Red top accent on map */
 .contact-map::before{
   content:'';position:absolute;top:0;left:0;right:0;
   height:4px;background:var(--red);z-index:1;
@@ -635,7 +723,7 @@ footer{
   display:grid;grid-template-columns:1fr 1fr 1fr;
   gap:3rem;margin-bottom:2.5rem;
 }
-.footer-brand img{height:72px;width:auto;object-fit:contain;/* filter:brightness(0) invert(1); */filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1)) invert(1); margin-bottom:1rem}
+.footer-brand img{height:72px;width:auto;object-fit:contain;filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1)) invert(1); margin-bottom:1rem}
 .footer-brand p{font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.7;max-width:28ch}
 .footer-col-title{
   font-family:var(--font-sub);font-size:.65rem;font-weight:600;
@@ -681,16 +769,12 @@ footer{
   position:relative;overflow:hidden;
 }
 .btn:active{transform:scale(.98)}
-
 .btn-red{background:var(--red);color:var(--white);border-color:var(--red)}
 .btn-red:hover{background:transparent;color:var(--red)}
-
 .btn-white{background:var(--white);color:var(--navy);border-color:var(--white)}
 .btn-white:hover{background:transparent;color:var(--white)}
-
 .btn-outline-white{background:transparent;color:var(--white);border-color:rgba(255,255,255,.4)}
 .btn-outline-white:hover{background:var(--white);color:var(--navy)}
-
 .btn-outline-red{background:transparent;color:var(--red);border-color:var(--red)}
 .btn-outline-red:hover{background:var(--red);color:var(--white)}
 
@@ -716,31 +800,49 @@ footer{
   .gcell:nth-child(1){grid-row:span 1}
   .footer-top{grid-template-columns:1fr 1fr}
 }
+
 @media(max-width:768px){
   .nav-links,.nav-tel-wrap,.nav-cta-btn{display:none}
   .ham{display:flex}
   .mob-call{display:flex}
-  .nav-inner,.about-wrap,.svc-head,.svc-grid,.gallery-head,.gallery-mosaic,.reviews-wrap,.contact-wrap,.footer-top,.footer-bottom{padding-left:1.2rem;padding-right:1.2rem}
-  .svc-grid{grid-template-columns:1fr}
+  .nav-inner{padding:0 1.2rem;height:60px}
+  .nav-logo img{height:45px}
+  
+  .hero-content{padding:3rem 1.2rem}
+  .hero-stats{flex-direction:column;gap:1rem}
+  .hero-actions .btn{width:100%;justify-content:center}
+  
+  .about-wrap{padding:0 1.2rem}
+  .about-images{height:300px;margin-bottom:2rem}
+  
+  .svc-head{padding:0 1.2rem;flex-direction:column;align-items:flex-start}
+  .svc-head-right{text-align:left}
+  .svc-grid{padding:0;grid-template-columns:1fr}
   .svc-item--feat{grid-column:span 1}
+  .svc-cta{padding:0 1.2rem}
+  
+  .gallery-head{padding:0 1.2rem;flex-direction:column;align-items:flex-start}
+  .gallery-sub{text-align:left}
+  .gallery-mosaic{padding:0 1.2rem;grid-template-columns:1fr;grid-template-rows:repeat(5,220px)}
+  .gcell:nth-child(1){grid-row:span 1}
+  
+  .reviews-wrap{padding:0 1.2rem}
   .reviews-grid{grid-template-columns:1fr}
   .rev:nth-child(n){transform:none}
-  .gallery-mosaic{grid-template-columns:1fr;grid-template-rows:repeat(5,220px)}
-  .gcell:nth-child(1){grid-row:span 1}
-  .contact-wrap{grid-template-columns:1fr;gap:2.5rem;padding-bottom:4rem}
+  
+  .contact-wrap{padding:0 1.2rem;grid-template-columns:1fr;gap:2.5rem;padding-bottom:4rem}
   .contact-map{height:320px}
-  .footer-top{grid-template-columns:1fr}
+  
+  .footer-top{padding:0 1.2rem;grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{padding:1.5rem 1.2rem 0;flex-direction:column;text-align:center}
+  
   .reviews-head{flex-direction:column;align-items:flex-start}
-  .gallery-head{flex-direction:column;align-items:flex-start}
-  .gallery-sub{text-align:left}
   .svc-head-right{text-align:left}
   .cta-actions{flex-direction:column;align-items:center}
+  .cta-inner{padding:0 1.2rem}
 }
 
-#margintop{
-  margin-top: 20px;
-}
-
+#margintop{margin-top:20px}
 </style>
 </head>
 <body>
@@ -760,19 +862,9 @@ footer{
         <li><a href="#contact">Kontakt</a></li>
       </ul>
     </nav>
-    <!-- <div class="nav-actions">
-      <div class="nav-tel-wrap">
-        <i class="fa-solid fa-phone"></i>
-        <a href="tel:798610954">798 610 954</a>
-      </div>
-      <a href="https://booksy.com/pl-pl/dl/show-business/93481?utm_medium=c2c_referral" class="nav-cta-btn">
-        <i class="fa-solid fa-scissors"></i>
-        Umów wizytę
-      </a> -->
-      <button class="ham" id="ham" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+    <button class="ham" id="ham" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -794,105 +886,48 @@ footer{
 </a>
 
 <main>
-
-<!-- ================================================================
-     HERO
-================================================================ -->
 <section id="hero" aria-label="THE ONE Barbershop">
   <div class="hero-bg">
-    <img src="scissors1.png" alt="Barber THE ONE Barbershop Wadowice trzymający nożyczki"/>Wnętrze THE ONE Barbershop Wadowice — barber przy pracy
+    <img src="scissors1.png" alt="Barber THE ONE Barbershop Wadowice trzymający nożyczki"/>
   </div>
   <div class="hero-pole" aria-hidden="true"></div>
-
   <div class="hero-content">
     <div class="hero-badge rv">
-      <i class="fa-solid fa-scissors"></i>
-      Barbershop Premium · Wadowice
+      <i class="fa-solid fa-scissors"></i> Barbershop Premium · Wadowice
     </div>
-
-    <h1 class="hero-h1 rv d1">
-      THE<br>
-      <span>ONE</span><br>
-      BARBERSHOP
-    </h1>
-
-    <p class="hero-sub rv d2">
-      Precyzyjne strzyżenie męskie i damskie, pielęgnacja brody, koloryzacja. Lwowska 19/3, Wadowice.
-    </p>
-
+    <h1 class="hero-h1 rv d1">THE<br><span>ONE</span><br>BARBERSHOP</h1>
+    <p class="hero-sub rv d2">Precyzyjne strzyżenie męskie i damskie, pielęgnacja brody, koloryzacja. Lwowska 19/3, Wadowice.</p>
     <div class="hero-divider rv d3"></div>
-
     <div class="hero-actions rv d3">
       <a href="https://booksy.com/pl-pl/dl/show-business/93481?utm_medium=c2c_referral" class="btn btn-red">
-        <i class="fa-solid fa-calendar-check"></i>
-        Umów wizytę
+        <i class="fa-solid fa-calendar-check"></i> Umów wizytę
       </a>
       <a href="#services" class="btn btn-outline-white">
-        <i class="fa-solid fa-list"></i>
-        Nasze usługi
+        <i class="fa-solid fa-list"></i> Nasze usługi
       </a>
     </div>
-
     <div class="hero-tel rv d4">
-      <i class="fa-solid fa-phone-volume"></i>
-      <a href="tel:798610954">798 610 954</a>
+      <i class="fa-solid fa-phone-volume"></i> <a href="tel:798610954">798 610 954</a>
     </div>
-
     <div class="hero-stats rv d5">
-      <div class="hstat">
-        <div class="hstat-icon"><i class="fa-solid fa-star"></i></div>
-        <div class="hstat-text">
-          <div class="hstat-num">4.9/5.0</div>
-          <div class="hstat-label">Google Reviews</div>
-        </div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-icon"><i class="fa-solid fa-users"></i></div>
-        <div class="hstat-text">
-          <div class="hstat-num">500+</div>
-          <div class="hstat-label">Zadowolonych klientów</div>
-        </div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-icon"><i class="fa-solid fa-award"></i></div>
-        <div class="hstat-text">
-          <div class="hstat-num">3+</div>
-          <div class="hstat-label">Lat doświadczenia</div>
-        </div>
-      </div>
+      <div class="hstat"><div class="hstat-icon"><i class="fa-solid fa-star"></i></div><div class="hstat-text"><div class="hstat-num">4.9/5.0</div><div class="hstat-label">Google Reviews</div></div></div>
+      <div class="hstat"><div class="hstat-icon"><i class="fa-solid fa-users"></i></div><div class="hstat-text"><div class="hstat-num">500+</div><div class="hstat-label">Zadowolonych klientów</div></div></div>
+      <div class="hstat"><div class="hstat-icon"><i class="fa-solid fa-award"></i></div><div class="hstat-text"><div class="hstat-num">3+</div><div class="hstat-label">Lat doświadczenia</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     O NAS
-================================================================ -->
 <section id="about" aria-labelledby="about-h">
   <div class="about-wrap">
-
-    <!-- Image collage -->
     <div class="about-images rv-l">
-      <div class="about-img-main">
-        <img src="inside.png" alt="Wnętrze THE ONE Barbershop Wadowice — barber przy pracy">
-      </div>
-      <div class="about-img-secondary">
-        <img src="guy3.png" alt="Wnętrze THE ONE Barbershop Wadowice — barber przy pracy">
-      </div>
-      <div class="about-img-accent" aria-hidden="true">
-        <i class="fa-solid fa-scissors"></i>
-      </div>
+      <div class="about-img-main"><img src="inside.png" alt="Wnętrze THE ONE Barbershop Wadowice — barber przy pracy"></div>
+      <div class="about-img-secondary"><img src="guy3.png" alt="Wnętrze THE ONE Barbershop Wadowice — barber przy pracy"></div>
+      <div class="about-img-accent" aria-hidden="true"><i class="fa-solid fa-scissors"></i></div>
     </div>
-
-    <!-- Text -->
     <div class="about-text rv-r">
-      <div>
-        <p class="section-tag"><i class="fa-solid fa-circle-info"></i> O nas</p>
-        <h2 id="about-h" class="section-title">WIĘCEJ NIŻ<br><span>FRYZJER</span></h2>
-      </div>
+      <div><p class="section-tag"><i class="fa-solid fa-circle-info"></i> O nas</p><h2 id="about-h" class="section-title">WIĘCEJ NIŻ<br><span>FRYZJER</span></h2></div>
       <div class="about-divider"></div>
-      <p class="section-lead">
-        THE ONE Barbershop to miejsce, gdzie tradycja rzemiosła barberskiego łączy się z nowoczesnym podejściem do stylu. Specjalizujemy się w precyzyjnym strzyżeniu męskim, pielęgnacji brody oraz fryzurach damskich.
-      </p>
+      <p class="section-lead">THE ONE Barbershop to miejsce, gdzie tradycja rzemiosła barberskiego łączy się z nowoczesnym podejściem do stylu. Specjalizujemy się w precyzyjnym strzyżeniu męskim, pielęgnacji brody oraz fryzurach damskich.</p>
       <ul class="about-list">
         <li><i class="fa-solid fa-check"></i> Profesjonalne strzyżenie maszynką i nożyczkami</li>
         <li><i class="fa-solid fa-check"></i> Golenie na gorący ręcznik z olejkami barberskimi</li>
@@ -901,196 +936,60 @@ footer{
         <li><i class="fa-solid fa-check"></i> Wyłącznie profesjonalne produkty i narzędzia</li>
         <li><i class="fa-solid fa-check"></i> Indywidualne podejście do każdego klienta</li>
       </ul>
-      <a href="tel:798610954" class="btn btn-red" style="margin-top:.5rem;width:fit-content">
-        <i class="fa-solid fa-phone"></i> Umów się teraz
-      </a>
+      <a href="tel:798610954" class="btn btn-red" style="margin-top:.5rem;width:fit-content"><i class="fa-solid fa-phone"></i> Umów się teraz</a>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     USŁUGI
-================================================================ -->
 <section id="services" aria-labelledby="svc-h">
   <div class="svc-head">
-    <div>
-      <p class="section-tag"><i class="fa-solid fa-scissors"></i> Usługi</p>
-      <h2 id="svc-h" class="section-title" style="color:var(--white)">NASZA<br><span>OFERTA</span></h2>
-    </div>
+    <div><p class="section-tag"><i class="fa-solid fa-scissors"></i> Usługi</p><h2 id="svc-h" class="section-title" style="color:var(--white)">NASZA<br><span>OFERTA</span></h2></div>
     <p class="svc-head-right">Kompleksowa obsługa barbershop i salon fryzjerski pod jednym dachem.</p>
   </div>
-
   <div class="svc-grid rv">
-
-    <!-- Featured -->
     <div class="svc-item svc-item--feat">
       <div class="svc-icon"><i class="fa-solid fa-scissors"></i></div>
-      <div>
-        <div class="svc-name">Strzyżenie Męskie</div>
-        <div class="svc-desc">Precyzyjne cięcie dopasowane do kształtu głowy, stylu życia i preferencji. Fade, taper, klasyk — każda technika dostępna.</div>
-      </div>
-      <ul class="svc-list">
-        <li>Fade / Skin Fade / Taper Fade</li>
-        <li>Undercut & nowoczesne cięcia</li>
-        <li>Cięcie klasyczne nożyczkami</li>
-        <li>Mycie i stylizacja w cenie</li>
-      </ul>
-      <!-- <a href="tel:798610954" class="btn btn-white" style="width:fit-content;margin-top:.5rem">
-        <i class="fa-solid fa-phone"></i> Zadzwoń
-      </a> -->
+      <div><div class="svc-name">Strzyżenie Męskie</div><div class="svc-desc">Precyzyjne cięcie dopasowane do kształtu głowy, stylu życia i preferencji. Fade, taper, klasyk — każda technika dostępna.</div></div>
+      <ul class="svc-list"><li>Fade / Skin Fade / Taper Fade</li><li>Undercut & nowoczesne cięcia</li><li>Cięcie klasyczne nożyczkami</li><li>Mycie i stylizacja w cenie</li></ul>
       <div class="svc-num" aria-hidden="true">01</div>
     </div>
-
-    <!-- Beard -->
-    <div class="svc-item">
-      <div class="svc-icon"><i class="fa-solid fa-user-tie"></i></div>
-      <div>
-        <div class="svc-name">Broda & Wąsy</div>
-        <div class="svc-desc">Formowanie, strzyżenie i pielęgnacja brody. Golenie na gorący ręcznik.</div>
-      </div>
-      <ul class="svc-list">
-        <li>Golenie tradycyjną brzytwą</li>
-        <li>Gorący ręcznik & olejki</li>
-        <li>Formowanie & linia brody</li>
-      </ul>
-      <div class="svc-num" aria-hidden="true">02</div>
-    </div>
-
-    <!-- Women -->
-    <div class="svc-item">
-      <div class="svc-icon"><i class="fa-solid fa-spa"></i></div>
-      <div>
-        <div class="svc-name">Fryzury Damskie</div>
-        <div class="svc-desc">Strzyżenie, modelowanie i stylizacja włosów damskich.</div>
-      </div>
-      <ul class="svc-list">
-        <li>Cięcie & modelowanie</li>
-        <li>Blow-dry & stylizacja</li>
-        <li>Regeneracja włosów</li>
-      </ul>
-      <div class="svc-num" aria-hidden="true">03</div>
-    </div>
-
-    <!-- Color -->
-    <div class="svc-item">
-      <div class="svc-icon"><i class="fa-solid fa-palette"></i></div>
-      <div>
-        <div class="svc-name">Koloryzacja</div>
-        <div class="svc-desc">Pełna koloryzacja, balayage, ombre i zabiegi regeneracyjne.</div>
-      </div>
-      <ul class="svc-list">
-        <li>Balayage & ombre</li>
-        <li>Pełna koloryzacja</li>
-        <li>Zabiegi pielęgnacyjne</li>
-      </ul>
-      <div class="svc-num" aria-hidden="true">04</div>
-    </div>
-
+    <div class="svc-item"><div class="svc-icon"><i class="fa-solid fa-user-tie"></i></div><div><div class="svc-name">Broda & Wąsy</div><div class="svc-desc">Formowanie, strzyżenie i pielęgnacja brody. Golenie na gorący ręcznik.</div></div><ul class="svc-list"><li>Golenie tradycyjną brzytwą</li><li>Gorący ręcznik & olejki</li><li>Formowanie & linia brody</li></ul><div class="svc-num" aria-hidden="true">02</div></div>
+    <div class="svc-item"><div class="svc-icon"><i class="fa-solid fa-spa"></i></div><div><div class="svc-name">Fryzury Damskie</div><div class="svc-desc">Strzyżenie, modelowanie i stylizacja włosów damskich.</div></div><ul class="svc-list"><li>Cięcie & modelowanie</li><li>Blow-dry & stylizacja</li><li>Regeneracja włosów</li></ul><div class="svc-num" aria-hidden="true">03</div></div>
+    <div class="svc-item"><div class="svc-icon"><i class="fa-solid fa-palette"></i></div><div><div class="svc-name">Koloryzacja</div><div class="svc-desc">Pełna koloryzacja, balayage, ombre i zabiegi regeneracyjne.</div></div><ul class="svc-list"><li>Balayage & ombre</li><li>Pełna koloryzacja</li><li>Zabiegi pielęgnacyjne</li></ul><div class="svc-num" aria-hidden="true">04</div></div>
   </div>
-
-  <div class="svc-cta rv">
-    <a href="tel:798610954" class="btn btn-red">
-      <i class="fa-solid fa-phone"></i>
-      Zadzwoń i umów wizytę
-    </a>
-  </div>
+  <div class="svc-cta rv"><a href="tel:798610954" class="btn btn-red"><i class="fa-solid fa-phone"></i> Zadzwoń i umów wizytę</a></div>
 </section>
 
-<!-- ================================================================
-    GALERIA
-================================================================ -->
 <section id="gallery" aria-labelledby="gallery-h">
   <div class="gallery-head rv">
-    <div>
-      <p class="section-tag"><i class="fa-regular fa-images"></i> Galeria</p>
-      <h2 id="gallery-h" class="section-title">NASZE<br><span>REALIZACJE</span></h2>
-    </div>
+    <div><p class="section-tag"><i class="fa-regular fa-images"></i> Galeria</p><h2 id="gallery-h" class="section-title">NASZE<br><span>REALIZACJE</span></h2></div>
     <p class="gallery-sub">Efekty mówią same za siebie. Sprawdź nasze najnowsze prace.</p>
   </div>
-
   <div class="gallery-mosaic rv">
-    <div class="gcell">
-      <img src="guy2.png" alt="Strzyżenie męskie — taper fade wykonany w THE ONE Barbershop Wadowice">
-      <div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-scissors"></i> Taper Fade</span></div>
-    </div>
-    <div class="gcell">
-      <img src="guy1.png" alt="Strzyżenie męskie — taper fade wykonany w THE ONE Barbershop Wadowice">
-      <div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-scissors"></i> Undercut</span></div>
-    </div>
-    <div class="gcell">
-      <img src="scissors.png" alt="Strzyżenie męskie — klasyczne cięcie nożyczkami wykonane w THE ONE Barbershop Wadowice">
-      <div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-cut"></i> Nożyczki</span></div>
-    </div>
-    <div class="gcell">
-      <img src="inside.png" alt="Wnętrze THE ONE Barbershop Wadowice — barber przy pracy">
-      <div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-store"></i> Salon</span></div>
-    </div>
-    <div class="gcell">
-      <img src="beard.png" alt="Strzyżenie męskie — klasyczne cięcie nożyczkami wykonane w THE ONE Barbershop Wadowice">
-      <div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-user-tie"></i> Broda</span></div>
-    </div>
+    <div class="gcell"><img src="guy2.png" alt="Strzyżenie męskie — taper fade wykonany w THE ONE Barbershop Wadowice"><div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-scissors"></i> Taper Fade</span></div></div>
+    <div class="gcell"><img src="guy1.png" alt="Strzyżenie męskie — taper fade wykonany w THE ONE Barbershop Wadowice"><div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-scissors"></i> Undercut</span></div></div>
+    <div class="gcell"><img src="scissors.png" alt="Strzyżenie męskie — klasyczne cięcie nożyczkami wykonane w THE ONE Barbershop Wadowice"><div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-cut"></i> Nożyczki</span></div></div>
+    <div class="gcell"><img src="inside.png" alt="Wnętrze THE ONE Barbershop Wadowice — barber przy pracy"><div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-store"></i> Salon</span></div></div>
+    <div class="gcell"><img src="beard.png" alt="Strzyżenie męskie — klasyczne cięcie nożyczkami wykonane w THE ONE Barbershop Wadowice"><div class="gcell-ov"><span class="gcell-label"><i class="fa-solid fa-user-tie"></i> Broda</span></div></div>
   </div>
 </section>
 
-<!-- ================================================================
-     OPINIE
-================================================================ -->
 <section id="reviews" aria-labelledby="reviews-h">
   <div class="reviews-wrap">
     <div class="reviews-head">
-      <div class="rv">
-        <p class="section-tag" style="color:var(--red)"><i class="fa-solid fa-star"></i> Opinie klientów</p>
-        <h2 id="reviews-h" class="section-title" style="color:var(--white)">CO MÓWIĄ<br><span>O NAS</span></h2>
-      </div>
-      <div class="reviews-score-block rv">
-        <div class="score-big" aria-label="Ocena 5.0">5.0</div>
-        <div class="score-stars" aria-hidden="true">
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </div>
-        <div class="score-sub">Google Reviews</div>
-      </div>
+      <div class="rv"><p class="section-tag" style="color:var(--red)"><i class="fa-solid fa-star"></i> Opinie klientów</p><h2 id="reviews-h" class="section-title" style="color:var(--white)">CO MÓWIĄ<br><span>O NAS</span></h2></div>
+      <div class="reviews-score-block rv"><div class="score-big" aria-label="Ocena 5.0">5.0</div><div class="score-stars" aria-hidden="true"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><div class="score-sub">Google Reviews</div></div>
     </div>
-
     <div class="reviews-grid" role="list">
-      <div class="rev rv" role="listitem">
-        <div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div>
-        <div class="rev-stars" aria-label="5 gwiazdek"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p class="rev-text">Top barber Wadowice, nigdy nie wyszedłem niezadowolony. Polecam każdemu.</p>
-        <p class="rev-author"><i class="fa-solid fa-user"></i> Michał K.</p>
-      </div>
-      <div class="rev rv d1" role="listitem">
-        <div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div>
-        <div class="rev-stars" aria-label="5 gwiazdek"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p class="rev-text">Profesjonalny zespół i rewelacyjna atmosfera. Czuć klasę już przy wejściu.</p>
-        <p class="rev-author"><i class="fa-solid fa-user"></i> Tomasz W.</p>
-      </div>
-      <div class="rev rv d2" role="listitem">
-        <div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div>
-        <div class="rev-stars" aria-label="5 gwiazdek"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p class="rev-text">Najlepszy barber w Wadowicach bez dwóch zdań!</p>
-        <p class="rev-author"><i class="fa-solid fa-user"></i> Paweł M.</p>
-      </div>
-      <div class="rev rv d3" role="listitem">
-        <div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div>
-        <div class="rev-stars" aria-label="5 gwiazdek"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p class="rev-text">Pełen profesjonalizm, polecam każdemu. Wróciłem już kilka razy.</p>
-        <p class="rev-author"><i class="fa-solid fa-user"></i> Artur S.</p>
-      </div>
-      <div class="rev rv d4" role="listitem">
-        <div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div>
-        <div class="rev-stars" aria-label="5 gwiazdek"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-        <p class="rev-text">Klimat i obsługa top, efekty oszałamiające. Mój stały barber!</p>
-        <p class="rev-author"><i class="fa-solid fa-user"></i> Kamil R.</p>
-      </div>
+      <div class="rev rv" role="listitem"><div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div><div class="rev-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">Top barber Wadowice, nigdy nie wyszedłem niezadowolony. Polecam każdemu.</p><p class="rev-author"><i class="fa-solid fa-user"></i> Michał K.</p></div>
+      <div class="rev rv d1" role="listitem"><div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div><div class="rev-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">Profesjonalny zespół i rewelacyjna atmosfera. Czuć klasę już przy wejściu.</p><p class="rev-author"><i class="fa-solid fa-user"></i> Tomasz W.</p></div>
+      <div class="rev rv d2" role="listitem"><div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div><div class="rev-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">Najlepszy barber w Wadowicach bez dwóch zdań!</p><p class="rev-author"><i class="fa-solid fa-user"></i> Paweł M.</p></div>
+      <div class="rev rv d3" role="listitem"><div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div><div class="rev-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">Pełen profesjonalizm, polecam każdemu. Wróciłem już kilka razy.</p><p class="rev-author"><i class="fa-solid fa-user"></i> Artur S.</p></div>
+      <div class="rev rv d4" role="listitem"><div class="rev-icon"><i class="fa-solid fa-quote-left"></i></div><div class="rev-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p class="rev-text">Klimat i obsługa top, efekty oszałamiające. Mój stały barber!</p><p class="rev-author"><i class="fa-solid fa-user"></i> Kamil R.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     CTA
-================================================================ -->
 <section id="cta" aria-labelledby="cta-h">
   <div class="cta-inner rv">
     <div class="cta-icon" aria-hidden="true"><i class="fa-solid fa-scissors"></i></div>
@@ -1099,107 +998,35 @@ footer{
   </div>
 </section>
 
-<!-- ================================================================
-     KONTAKT
-================================================================ -->
 <section id="contact" aria-labelledby="contact-h">
   <div class="contact-wrap">
     <div>
       <p class="section-tag rv"><i class="fa-solid fa-location-dot"></i> Kontakt</p>
       <h2 id="contact-h" class="section-title rv d1">ZNAJDŹ<br><span>NAS</span></h2>
-
       <div class="contact-items">
-        <div class="citem rv d2">
-          <div class="citem-icon"><i class="fa-solid fa-phone"></i></div>
-          <div>
-            <p class="citem-label">Telefon</p>
-            <p class="citem-val"><a href="tel:798610954">798 610 954</a></p>
-          </div>
-        </div>
-        <div class="citem rv d3">
-          <div class="citem-icon"><i class="fa-solid fa-location-dot"></i></div>
-          <div>
-            <p class="citem-label">Adres</p>
-            <p class="citem-val"><a href="https://maps.app.goo.gl/XvHe1FJuS3REhptU8" target="_blank" rel="noopener noreferrer">Lwowska 19/3, 34-100 Wadowice</a></p>
-          </div>
-        </div>
-        <div class="citem rv d4">
-          <div class="citem-icon"><i class="fa-solid fa-clock"></i></div>
-          <div>
-            <p class="citem-label">Godziny otwarcia</p>
-            <div class="hours-grid">
-              <div class="hours-row"><span>Poniedziałek – Piątek</span><span>9:00 – 20:00</span></div>
-              <div class="hours-row"><span>Sobota</span><span>9:00 – 18:00</span></div>
-              <div class="hours-row"><span>Niedziela</span><span>Nieczynne</span></div>
-            </div>
-          </div>
-        </div>
+        <div class="citem rv d2"><div class="citem-icon"><i class="fa-solid fa-phone"></i></div><div><p class="citem-label">Telefon</p><p class="citem-val"><a href="tel:798610954">798 610 954</a></p></div></div>
+        <div class="citem rv d3"><div class="citem-icon"><i class="fa-solid fa-location-dot"></i></div><div><p class="citem-label">Adres</p><p class="citem-val"><a href="https://maps.app.goo.gl/XvHe1FJuS3REhptU8" target="_blank" rel="noopener noreferrer">Lwowska 19/3, 34-100 Wadowice</a></p></div></div>
+        <div class="citem rv d4"><div class="citem-icon"><i class="fa-solid fa-clock"></i></div><div><p class="citem-label">Godziny otwarcia</p><div class="hours-grid"><div class="hours-row"><span>Poniedziałek – Piątek</span><span>9:00 – 20:00</span></div><div class="hours-row"><span>Sobota</span><span>9:00 – 18:00</span></div><div class="hours-row"><span>Niedziela</span><span>Nieczynne</span></div></div></div></div>
       </div>
-
-      <a href="tel:798610954" class="btn btn-red rv d5" id="margintop" style="width:fit-content">
-        <i class="fa-solid fa-phone"></i> Zadzwoń teraz
-      </a>
+      <a href="tel:798610954" class="btn btn-red rv d5" id="margintop" style="width:fit-content"><i class="fa-solid fa-phone"></i> Zadzwoń teraz</a>
     </div>
-
     <div class="contact-map rv-r" role="region" aria-label="Mapa dojazdu do THE ONE Barbershop">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.1234!2d19.49024!3d49.88434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47164289b77dcb27%3A0x75c2c8fb9fdf43f3!2sLwowska%2019%2C%2034-100%20Wadowice!5e0!3m2!1spl!2spl!4v1700000000000!5m2!1spl!2spl"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        title="Mapa: THE ONE Barbershop Wadowice"
-        aria-label="Google Maps — THE ONE Barbershop Wadowice, Lwowska 19/3">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.1234!2d19.49024!3d49.88434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47164289b77dcb27%3A0x75c2c8fb9fdf43f3!2sLwowska%2019%2C%2034-100%20Wadowice!5e0!3m2!1spl!2spl!4v1700000000000!5m2!1spl!2spl" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa: THE ONE Barbershop Wadowice"></iframe>
     </div>
   </div>
 </section>
-
 </main>
 
-<!-- FOOTER -->
 <footer role="contentinfo">
   <div class="footer-top">
-    <div class="footer-brand">
-      <img src="logo.png" alt="THE ONE Barbershop logo">
-      <p>Premium barber i salon fryzjerski w Wadowicach. Lwowska 19/3, 34-100 Wadowice.</p>
-      <div class="footer-socials" style="margin-top:1.2rem">
-        <a href="#" class="fsoc" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#" class="fsoc" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" class="fsoc" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-col-title">Nawigacja</div>
-      <ul class="footer-links">
-        <li><a href="#about"><i class="fa-solid fa-chevron-right"></i> O nas</a></li>
-        <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Usługi</a></li>
-        <li><a href="#gallery"><i class="fa-solid fa-chevron-right"></i> Galeria</a></li>
-        <li><a href="#reviews"><i class="fa-solid fa-chevron-right"></i> Opinie</a></li>
-        <li><a href="#contact"><i class="fa-solid fa-chevron-right"></i> Kontakt</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Kontakt</div>
-      <ul class="footer-links">
-        <li><a href="tel:798610954"><i class="fa-solid fa-phone"></i> 798 610 954</a></li>
-        <li><a href="#"><i class="fa-solid fa-location-dot"></i> Lwowska 19/3, Wadowice</a></li>
-        <li><a href="#"><i class="fa-solid fa-clock"></i> Pon–Pt: 9:00–20:00</a></li>
-        <li><a href="#"><i class="fa-solid fa-clock"></i> Sob: 9:00–18:00</a></li>
-      </ul>
-    </div>
+    <div class="footer-brand"><img src="logo.png" alt="THE ONE Barbershop logo"><p>Premium barber i salon fryzjerski w Wadowicach. Lwowska 19/3, 34-100 Wadowice.</p><div class="footer-socials"><a href="#" class="fsoc"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="fsoc"><i class="fa-brands fa-instagram"></i></a><a href="#" class="fsoc"><i class="fa-brands fa-tiktok"></i></a></div></div>
+    <div><div class="footer-col-title">Nawigacja</div><ul class="footer-links"><li><a href="#about"><i class="fa-solid fa-chevron-right"></i> O nas</a></li><li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Usługi</a></li><li><a href="#gallery"><i class="fa-solid fa-chevron-right"></i> Galeria</a></li><li><a href="#reviews"><i class="fa-solid fa-chevron-right"></i> Opinie</a></li><li><a href="#contact"><i class="fa-solid fa-chevron-right"></i> Kontakt</a></li></ul></div>
+    <div><div class="footer-col-title">Kontakt</div><ul class="footer-links"><li><a href="tel:798610954"><i class="fa-solid fa-phone"></i> 798 610 954</a></li><li><a href="#"><i class="fa-solid fa-location-dot"></i> Lwowska 19/3, Wadowice</a></li><li><a href="#"><i class="fa-solid fa-clock"></i> Pon–Pt: 9:00–20:00</a></li><li><a href="#"><i class="fa-solid fa-clock"></i> Sob: 9:00–18:00</a></li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© 2025 THE ONE Barbershop Wadowice · Lwowska 19/3</p>
-    <p class="footer-copy">Barber Wadowice · Fryzjer Wadowice · Strzyżenie Wadowice</p>
-  </div>
+  <div class="footer-bottom"><p class="footer-copy">© 2025 THE ONE Barbershop Wadowice · Lwowska 19/3</p><p class="footer-copy">Barber Wadowice · Fryzjer Wadowice · Strzyżenie Wadowice</p></div>
 </footer>
 
 <script>
-// Nav scroll
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  // subtle shrink on scroll already handled by border
-},{ passive:true });
-
-// Hamburger
 const ham=document.getElementById('ham'),mob=document.getElementById('mobMenu');
 ham.addEventListener('click',()=>{
   const o=mob.classList.toggle('open');
@@ -1215,15 +1042,9 @@ function closeMob(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMob();});
 
-// Reveal on scroll
-(()=>{
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});
-  },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
-})();
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0.1});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
 
-// Hero entrance
 window.addEventListener('load',()=>{
   ['.hero-badge','.hero-h1','.hero-sub','.hero-divider','.hero-actions','.hero-tel','.hero-stats'].forEach((sel,i)=>{
     const el=document.querySelector(sel);if(!el)return;
@@ -1232,11 +1053,10 @@ window.addEventListener('load',()=>{
   });
 });
 
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
-    if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+scrollY-72,behavior:'smooth'});}
+    if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+scrollY-72,behavior:'smooth'});closeMob();}
   });
 });
 </script>
