@@ -445,7 +445,7 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
 }
 
 .svc-grid{
-  max-width:1300px;margin:0 auto;padding:0.5rem;
+  max-width:(1300px - 4rem);margin:0 auto;padding:0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rbga(255,255,255,0.08);
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:1px;background:rgba(255,255,255,.08);
@@ -583,22 +583,29 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
 .score-sub{font-family:var(--font-sub);font-size:.65rem;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 
 .reviews-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  grid-template-rows:auto auto;
-  gap:1.5rem;align-items:start;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+  align-items:stretch;
 }
 .rev{
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
-  padding:2rem 2rem;
+  padding:2rem;
   position:relative;
-  transition:border-color .3s,transform .4s;
+  transition: border-color .3s, transform .4s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-.rev:nth-child(1){transform:translateY(0)}
-.rev:nth-child(2){transform:translateY(1.8rem)}
+/* .rev:nth-child(1){transform:translateY(0)}
+.rev:nth-child(2){transform:translateY(1.8rem)} */
 .rev:nth-child(3){transform:translateY(-1rem);border-top:3px solid var(--red);background:rgba(204,31,40,.08);}
-.rev:nth-child(4){transform:translateY(.5rem)}
-.rev:nth-child(5){transform:translateY(2.5rem)}
+/* .rev:nth-child(4){transform:translateY(.5rem)}
+.rev:nth-child(5){transform:translateY(2.5rem)} */
+.rev:nth-child(n){
+  transform: none;
+}
 .rev:hover{border-color:rgba(204,31,40,.35);transform:translateY(-4px)!important}
 
 .rev-stars{display:flex;gap:3px;color:var(--red);margin-bottom:1rem}
@@ -608,6 +615,7 @@ img{display:block;max-width:100%;height:100%;object-fit:cover}
   font-family:var(--font-sub);font-style:italic;font-size:.95rem;
   font-weight:300;color:rgba(255,255,255,.75);
   line-height:1.7;margin-bottom:1.2rem;
+  flex-grow: 1;
 }
 .rev-author{
   display:flex;align-items:center;gap:.5rem;
@@ -832,6 +840,27 @@ footer{
 }
 
 #margintop{margin-top:20px}
+
+/* ================================================================
+   GLOBALNE WYRÓWNANIE KONTENERÓW (EQUAL PADDING)
+================================================================ */
+.nav-inner,
+.hero-content,
+.about-wrap,
+.svc-head,
+.svc-cta,
+.gallery-head,
+.gallery-mosaic,
+.reviews-wrap,
+.cta-inner,
+.contact-wrap,
+.footer-top,
+.footer-bottom {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+}
+
+
 </style>
 </head>
 <body>
